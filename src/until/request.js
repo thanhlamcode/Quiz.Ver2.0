@@ -1,4 +1,4 @@
-const API_DOMAIN = "https://database-quiz.onrender.com";
+const API_DOMAIN = "https://database-quiz-delta.vercel.app";
 // const API_DOMAIN = "http://localhost:3002";
 
 export const get = async (path) => {
