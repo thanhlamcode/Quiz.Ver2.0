@@ -1,4 +1,20 @@
-.button_nav.focus {
-    background-color: yellow;
-    color: red;
+.logout-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ant-menu-horizontal {
+  line-height: 64px;
+  background-color: #001529; /* Màu nền tối để phù hợp với giao diện */
+  color: #fff;
+}
+
+.ant-menu-item-selected {
+  background-color: #1890ff !important; /* Nền xanh khi được chọn */
+  color: #fff !important;
+}
+
+button.logout {
+  margin-left: 10px;
 }

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";

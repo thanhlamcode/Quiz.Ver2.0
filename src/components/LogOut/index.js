@@ -1,14 +1,17 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./style.css";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Button, Menu } from "antd";
 import { useDispatch } from "react-redux";
 import { login } from "../../action/login";
 import Swal from "sweetalert2";
+import "./style.css";
 
 function LogOut() {
   const dispatch = useDispatch();
   const [focusIndex, setFocusIndex] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation(); // Hook để lấy thông tin đường dẫn hiện tại
+
   const handleClick = () => {
     Swal.fire({
       title: "Bạn có muốn đăng xuất?",
@@ -23,38 +26,45 @@ function LogOut() {
     });
   };
 
+  // Tự động thay đổi focusIndex dựa trên đường dẫn hiện tại
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/":
+        setFocusIndex(0);
+        break;
+      case "/topic":
+        setFocusIndex(1);
+        break;
+      case "/answer":
+        setFocusIndex(2);
+        break;
+      default:
+        setFocusIndex(null);
+    }
+  }, [location.pathname]);
+
   return (
-    <>
-      <div>
-        <Link to="/">
-          <button
-            className={`button_nav ${focusIndex === 0 ? "focus" : ""}`}
-            onClick={() => setFocusIndex(0)}
-          >
-            Home
-          </button>
-        </Link>
-        <Link to="topic">
-          <button
-            className={`button_nav ${focusIndex === 1 ? "focus" : ""}`}
-            onClick={() => setFocusIndex(1)}
-          >
-            Topic
-          </button>
-        </Link>
-        <Link to="answer">
-          <button
-            className={`button_nav ${focusIndex === 2 ? "focus" : ""}`}
-            onClick={() => setFocusIndex(2)}
-          >
-            Answer
-          </button>
-        </Link>
-      </div>
-      <button className="logout" onClick={handleClick}>
+    <div className="logout-container">
+      <Menu mode="horizontal" selectedKeys={[focusIndex?.toString()]}>
+        <Menu.Item key="0">
+          <Link to="/">Home</Link>
+        </Menu.Item>
+        <Menu.Item key="1">
+          <Link to="/topic">Topic</Link>
+        </Menu.Item>
+        <Menu.Item key="2">
+          <Link to="/answer">Answer</Link>
+        </Menu.Item>
+      </Menu>
+      <Button
+        type="primary"
+        danger
+        onClick={handleClick}
+        style={{ marginTop: "10px" }}
+      >
         LogOut
-      </button>
-    </>
+      </Button>
+    </div>
   );
 }
 
