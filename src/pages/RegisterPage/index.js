@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { getInfo } from "../../service/getInfo";
-import "./style.scss";
+import { Form, Input, Button, Typography } from "antd";
 import Swal from "sweetalert2";
 import { post } from "../../until/request";
+import "./style.scss";
+
+const { Title } = Typography;
 
 function RegisterPage() {
   const generateToken = () => {
@@ -18,8 +21,8 @@ function RegisterPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+  const handleSubmit = () => {
     getInfo().then((data) => {
       const user = data.find((item) => item.username === username);
       if (user) {
@@ -46,48 +49,61 @@ function RegisterPage() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="form_dk">
-        <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
-        <div className="form__input">
-          <label for="username">Username:</label> <br></br>
-          <input
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-            type="text"
-            id="username"
-            name="username"
-            required
+    <div className="register-container">
+      <Form
+        name="register"
+        layout="vertical"
+        onFinish={handleSubmit}
+        className="form_dk"
+      >
+        <Title level={2} style={{ textAlign: "center" }}>
+          ĐĂNG KÝ TÀI KHOẢN
+        </Title>
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[{ required: true, message: "Please input your username!" }]}
+        >
+          <Input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
-        <div className="form__input">
-          <label for="password">Password:</label> <br></br>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+        </Form.Item>
+
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: "Please input your password!" }]}
+        >
+          <Input.Password
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-        <div className="form__input">
-          <label for="fullName">Full Name:</label> <br></br>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            required
-            onChange={(e) => {
-              setFullName(e.target.value);
-            }}
+        </Form.Item>
+
+        <Form.Item
+          label="Full Name"
+          name="fullName"
+          rules={[{ required: true, message: "Please input your full name!" }]}
+        >
+          <Input
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
           />
-        </div>
-        <button className="login">Đăng ký</button>
-      </form>
-    </>
+        </Form.Item>
+
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="register-btn"
+            block
+          >
+            Đăng ký
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 }
 

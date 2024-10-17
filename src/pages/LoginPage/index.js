@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { getInfo } from "../../service/getInfo";
-import "./style.scss";
+import { Form, Input, Button, Typography } from "antd";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { login } from "../../action/login";
 import { inforUserName } from "../../action/infor";
 import { useNavigate } from "react-router-dom";
+import "./style.scss";
+
+const { Title } = Typography;
 
 function LoginPage() {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Sử dụng useNavigate để điều hướng
-  const handleLogin = (e) => {
-    e.preventDefault();
+
+  const handleLogin = () => {
     getInfo()
       .then((data) => {
         const user = data.find(
@@ -42,37 +45,45 @@ function LoginPage() {
         console.error("Error fetching info:", error);
       });
   };
+
   return (
-    <>
-      <form onSubmit={handleLogin} className="form_dn">
-        <h1>LOGIN QUIZ</h1>
-        <div className="form__input">
-          <label for="username">Username:</label> <br></br>
-          <input
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-            type="text"
-            id="username"
-            name="username"
-            required
+    <div className="login-container">
+      <Form
+        name="login"
+        layout="vertical"
+        onFinish={handleLogin}
+        className="form_dn"
+      >
+        <Title level={2} style={{ textAlign: "center" }}>
+          LOGIN QUIZ
+        </Title>
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[{ required: true, message: "Please input your username!" }]}
+        >
+          <Input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
-        <div className="form__input">
-          <label for="password">Password:</label> <br></br>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+        </Form.Item>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: "Please input your password!" }]}
+        >
+          <Input.Password
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-        <button className="login">Login</button>
-      </form>
-    </>
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" className="login-btn" block>
+            Login
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 }
 
