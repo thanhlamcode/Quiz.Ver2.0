@@ -8,6 +8,9 @@ import { post } from "../../until/request";
 import Swal from "sweetalert2";
 import { getUserAnswer } from "../../service/getUserAnswer";
 import { useNavigate } from "react-router-dom";
+import { Form, Radio, Button, Typography, Space } from "antd";
+
+const { Title } = Typography;
 
 function Excercise() {
   const topic = useSelector((state) => state.topicReducer);
@@ -20,34 +23,27 @@ function Excercise() {
 
   const handleChange = (questionId, answerIndex) => {
     setAnswers((prevAnswers) => {
-      // Lọc ra tất cả các câu trả lời cũ cho questionId hiện tại
       const filteredAnswers = prevAnswers.filter(
         (answer) => answer.questionId !== questionId
       );
-      // Tìm đáp án chính xác cho câu hỏi này
       const correctAnswer = questionData.find(
         (item) => item.id === questionId
       ).correctAnswer;
 
-      // Thêm câu trả lời mới vào mảng đã lọc, bao gồm cả đáp án chính xác
       return [
         ...filteredAnswers,
         {
           questionId: questionId,
           answer: answerIndex,
-          correctAnswer: correctAnswer, // Thêm đáp án chính xác vào đối tượng câu trả lời
+          correctAnswer: correctAnswer,
         },
       ];
     });
   };
 
   useEffect(() => {
-    console.log(answers);
-    // Dispatch hành động khi answers thay đổi
     dispatch(answerUser(answers));
   }, [answers, dispatch]);
-
-  console.log(inforUser);
 
   useEffect(() => {
     let topicId;
@@ -71,16 +67,12 @@ function Excercise() {
       getQuestion().then((data) => {
         const questions = data.filter((item) => item.topicId === topicId);
         setQuestionData(questions);
-        console.log(questions);
       });
     }
-    // dispatch infoTopic chỉ khi topicId thay đổi
     dispatch(infoTopic(topicId));
   }, [topic, dispatch]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     // Kiểm tra lại inforUser trước khi gửi
     if (inforUser && typeof inforUser === "object") {
       console.log(inforUser);
@@ -104,39 +96,41 @@ function Excercise() {
   };
 
   return (
-    <>
-      <div className="excercise">
-        <h1>Chủ đề luyện tập {topic}</h1>
-        <br />
-        <form onSubmit={handleSubmit}>
-          {questionData.map((item, index) => (
-            <div key={index}>
-              <p className="number_question">
-                Câu {index + 1}: {item.question}
-              </p>
+    <div className="exercise-container">
+      <Title level={2}>Chủ đề luyện tập: {topic}</Title>
+      <Form onFinish={handleSubmit}>
+        {questionData.map((item, index) => (
+          <div key={index} className="question-block">
+            <Title level={4} className="question-text">
+              Câu {index + 1}: {item.question}
+            </Title>
+            <Radio.Group
+              onChange={(e) => handleChange(item.id, e.target.value)}
+              className="answer-group"
+            >
               {item.answers.map((question, index_answers) => (
-                <div key={index_answers}>
-                  <label>
-                    <input
-                      type="radio"
-                      name={`question_${item.id}`}
-                      value={`option${index_answers}`}
-                      required
-                      onChange={() => {
-                        handleChange(item.id, index_answers);
-                      }}
-                    />
-                    <span> {question}</span>
-                  </label>
+                <>
+                  <Radio
+                    key={index_answers}
+                    value={index_answers}
+                    className="answer-option"
+                    style={{ fontSize: "15px" }}
+                  >
+                    {question}
+                  </Radio>
                   <br />
-                </div>
+                </>
               ))}
-            </div>
-          ))}
-          <button>Nộp bài</button>
-        </form>
-      </div>
-    </>
+            </Radio.Group>
+          </div>
+        ))}
+        <Form.Item>
+          <Button type="primary" htmlType="submit" block className="submit-btn">
+            Nộp bài
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 }
 

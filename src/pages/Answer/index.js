@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { getUserAnswer } from "../../service/getUserAnswer";
-import "./style.scss";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Table, Button, Typography } from "antd";
+import "./style.scss";
+
+const { Title } = Typography;
 
 function Answer() {
   const [userAnswersData, setData] = useState([]);
   const userId = useSelector((state) => state.inforUserReducer);
-  console.log(userId.userId);
   const navigate = useNavigate();
+
   useEffect(() => {
     getUserAnswer().then((data) => {
-      console.log(data);
       setData(data);
     });
   }, []);
@@ -20,62 +22,62 @@ function Answer() {
     navigate(`/answer/${id}`);
   };
 
-  return (
-    <>
-      <div className="answer">
-        <h1>Danh sách bài luyện tập</h1>
-        <table>
-          <thead>
-            <tr>
-              <td>ID</td>
-              <td>Tên chủ đề</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            {userAnswersData.map((item) => {
-              let topic = "";
-              switch (item.topicId) {
-                case 1:
-                  topic = "HTML";
-                  break;
-                case 2:
-                  topic = "CSS";
-                  break;
-                case 3:
-                  topic = "Javascript";
-                  break;
-                case 4:
-                  topic = "React";
-                  break;
-                default:
-                  break;
-              }
+  const columns = [
+    {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+      width: "10%",
+    },
+    {
+      title: "Tên chủ đề",
+      dataIndex: "topic",
+      key: "topic",
+      width: "70%",
+    },
+    {
+      title: "",
+      key: "action",
+      render: (text, record) => (
+        <Button type="primary" onClick={() => handleClick(record.id)}>
+          Xem chi tiết
+        </Button>
+      ),
+    },
+  ];
 
-              if (item.userId === userId.userId) {
-                return (
-                  <tr key={item.id}>
-                    <td>{item.id}</td>
-                    <td>{topic}</td>
-                    <td>
-                      <button
-                        className="view_full"
-                        onClick={() => {
-                          handleClick(item.id);
-                        }}
-                      >
-                        Xem chi tiết
-                      </button>
-                    </td>
-                  </tr>
-                );
-              }
-              return null; // Phải có return null nếu không có gì để render
-            })}
-          </tbody>
-        </table>
-      </div>
-    </>
+  const dataSource = userAnswersData
+    .filter((item) => item.userId === userId.userId)
+    .map((item) => ({
+      key: item.id,
+      id: item.id,
+      topic: (() => {
+        switch (item.topicId) {
+          case 1:
+            return "HTML";
+          case 2:
+            return "CSS";
+          case 3:
+            return "Javascript";
+          case 4:
+            return "React";
+          default:
+            return "Unknown";
+        }
+      })(),
+    }));
+
+  return (
+    <div className="answer-container">
+      <Title level={2}>Danh sách bài luyện tập</Title>
+      <Table
+        dataSource={dataSource}
+        columns={columns}
+        pagination={false}
+        bordered
+        className="answer-table"
+      />
+    </div>
   );
 }
 

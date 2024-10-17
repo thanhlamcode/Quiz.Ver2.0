@@ -1,31 +1,20 @@
-.topic{
-    margin: 20px;
-
-    h1{
-        margin: 15px 0;
-    }
-
-    table, thead, td, tbody{
-        border: solid #ddd 2px;
-        font-size: 24px;
-        border-collapse: collapse;
-    }
-
-    thead{
-        font-weight: 700;
-    }
-
-    td{
-        padding: 20px;
-    }
-
-    .btn-do{
-        padding: 10px 20px;
-        background-color: white;
-        border: solid #ddd 1px;
-        cursor: pointer;
-        &:hover{
-            color: red;
-        }
-    }
-}
+.topic-container {
+    padding: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .topic-table {
+    margin-top: 20px;
+    background: #fff;
+  }
+  
+  
+  .ant-table-thead > tr > th {
+    background-color: #fafafa;
+    font-weight: bold;
+  }
+  
