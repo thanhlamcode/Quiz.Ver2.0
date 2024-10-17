@@ -8,7 +8,7 @@ import { post } from "../../until/request";
 import Swal from "sweetalert2";
 import { getUserAnswer } from "../../service/getUserAnswer";
 import { useNavigate } from "react-router-dom";
-import { Form, Radio, Button, Typography, Space } from "antd";
+import { Form, Radio, Button, Typography } from "antd";
 
 const { Title } = Typography;
 
@@ -18,6 +18,7 @@ function Excercise() {
   const [answers, setAnswers] = useState([]);
   const inforUser = useSelector((state) => state.inforUserReducer);
   const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
   const [length, setLength] = useState(0);
   const navigate = useNavigate();
 

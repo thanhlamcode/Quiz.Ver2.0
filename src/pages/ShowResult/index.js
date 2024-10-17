@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import { useNavigate, useParams } from "react-router-dom";
 import { getUserAnswer } from "../../service/getUserAnswer";
 import { useEffect, useState } from "react";
