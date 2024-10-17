@@ -1,0 +1,42 @@
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .layout__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    background-color: #001529;
+  }
+  
+  .logo {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .layout__main {
+    flex-grow: 1; /* Đảm bảo Content chiếm toàn bộ không gian trống */
+    padding: 24px 50px;
+    background-color: #f0f2f5; /* Màu nền sáng để làm nổi bật nội dung */
+  }
+  
+  .site-layout-content {
+    background: #fff;
+    padding: 24px;
+    min-height: 280px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .layout__footer {
+    text-align: center;
+    background-color: #001529;
+    color: #fff;
+    padding: 10px 50px;
+  }
+  

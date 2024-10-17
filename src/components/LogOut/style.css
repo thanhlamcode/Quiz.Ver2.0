@@ -1,0 +1,4 @@
+.button_nav.focus {
+    background-color: yellow;
+    color: red;
+}

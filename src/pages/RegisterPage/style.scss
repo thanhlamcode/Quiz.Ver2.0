@@ -1,0 +1,26 @@
+.form_dk{
+    display: flex;
+    flex-direction: column;
+    padding: 70px;
+    border: solid #ddd 2px;
+    width: 50%;
+    margin: 85px auto;
+
+    .form__input{
+        margin-bottom: 10px;
+    }
+
+    .login{
+        background-color: orange;
+        color: white;
+        font-weight: 600;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    input{
+        width: 100%;
+    }
+}

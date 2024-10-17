@@ -1,0 +1,33 @@
+.page__result{
+    margin-top: 20px;
+    margin-left: 40px;
+
+    .page__header{
+        margin-bottom: 20px;
+        // font-weight: 700;
+
+        span{
+            font-weight: 700;
+        }
+    }
+
+    .table_results{
+        .choice{
+    
+            label{
+                
+            }
+    
+            .green-color{
+                color: rgb(0, 118, 0);
+                font-weight: 500;
+            }
+    
+            .red-color{
+                color: red;
+                font-weight: 500;
+            }
+        }
+    }
+}
+

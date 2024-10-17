@@ -1,0 +1,16 @@
+.home{
+    margin: 20px;
+
+    &__button{
+        border-bottom: 1px #ddd solid;
+        padding: 10px;
+
+        button{
+            background: white;
+            padding: 10px 20px;
+            border: #ddd solid;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+    }
+}

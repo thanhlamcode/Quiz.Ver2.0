@@ -1,0 +1,31 @@
+.topic{
+    margin: 20px;
+
+    h1{
+        margin: 15px 0;
+    }
+
+    table, thead, td, tbody{
+        border: solid #ddd 2px;
+        font-size: 24px;
+        border-collapse: collapse;
+    }
+
+    thead{
+        font-weight: 700;
+    }
+
+    td{
+        padding: 20px;
+    }
+
+    .btn-do{
+        padding: 10px 20px;
+        background-color: white;
+        border: solid #ddd 1px;
+        cursor: pointer;
+        &:hover{
+            color: red;
+        }
+    }
+}

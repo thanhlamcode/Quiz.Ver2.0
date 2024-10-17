@@ -1,0 +1,26 @@
+.answer{
+    margin: 50px 50px;
+
+    table, thead, tbody, tr, td{
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+
+    table{
+        margin-top: 20px;
+    }
+
+    thead{
+        font-weight: 700;
+    }
+
+    td{
+        padding: 20px;
+        font-size: 20px;
+    }
+
+    button {
+        cursor: pointer;
+    }
+}
+
