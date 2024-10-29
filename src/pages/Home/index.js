@@ -42,7 +42,7 @@ function Home() {
 
   return (
     <div className="home-container">
-      <Title level={2}>Chúc mừng bạn đã đăng nhập thành công!</Title>
+      // <Title level={2}>Chúc mừng bạn đã đăng nhập thành công!</Title>
       <Space direction="vertical" className="home__button" size="large">
         <Button type="primary" onClick={handleTopic} block>
           Danh sách chủ đề ôn luyện
