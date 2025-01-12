@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Quiz Ver 2.0 🧠🎯
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Quiz Ver 2.0** is an upgraded and interactive quiz application designed to deliver engaging and challenging quiz experiences. This version comes with enhanced features, a modern user interface, and support for dynamic quizzes across multiple categories, making it ideal for educational, entertainment, and training purposes.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Key Features 🔑
 
-### `npm start`
+- **Dynamic Quiz Creation:**
+  - Create quizzes with customizable categories and difficulty levels.
+  - Support for multiple question types (MCQs, True/False, etc.).
+- **User Progress Tracking:**
+  - Track scores and progress in real-time.
+  - Detailed feedback and explanations for answers.
+- **Admin Dashboard:**
+  - Manage quizzes, users, and categories.
+  - View analytics and performance data.
+- **Responsive Design:**
+  - Optimized for mobile, tablet, and desktop devices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used 🛠️
 
-### `npm test`
+- **Frontend:** ReactJS, TailwindCSS.
+- **Backend:** Node.js, Express.
+- **Database:** MongoDB.
+- **Authentication:** JSON Web Tokens (JWT).
+- **Styling:** Sass for modular CSS.
+- **State Management:** Redux.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Installation 🚀
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### System Requirements
+- Node.js >= 14.0
+- MongoDB >= 4.0
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Steps to Install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/thanhlamcode/Quiz.Ver2.0.git
+   cd Quiz.Ver2.0
+   ```
 
-### `npm run eject`
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Configure environment:**
+   Create a `.env` file in the root directory with the following variables:
+   ```env
+   PORT=4000
+   DB_URI=mongodb://localhost:27017/quiz_ver2
+   JWT_SECRET=your_secret_key
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Run the application:**
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. **Access the application:**
+   Open your browser and navigate to: [http://localhost:4000](http://localhost:4000)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Contribution 🤝
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+We welcome contributions from the community! Here's how you can get involved:
+- Report issues or suggest features by creating an **Issue**.
+- Submit a **Pull Request** to contribute code improvements or new features.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## License 📜
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contact 📧
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For inquiries or support, please contact:
+- **GitHub Issues:** [https://github.com/thanhlamcode/Quiz.Ver2.0/issues](https://github.com/thanhlamcode/Quiz.Ver2.0/issues)
+- **Email:** thanhlamcode@example.com
